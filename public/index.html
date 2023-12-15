@@ -1,0 +1,361 @@
+<!-- MAIN HTML PAGE - This contains the full PlantOS application -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Page metadata and title -->
+        <title>Plantagotchi</title>
+        <meta charset="UTF-8" />
+        <!-- External stylesheets -->
+        <!-- Credit to Sakun for System.css 
+        https://github.com/sakofchit/system.css  -->
+        <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <!-- Font Awesome for icons -->
+        <script src="https://kit.fontawesome.com/ea878f8687.js" crossorigin="anonymous"></script>
+        <!-- Favicon icon-->
+        <link rel="icon" type="image/x-icon" href="img/leaf2.ico">
+    </head>
+    <body>
+        <!-- Loading dialog -->
+        <div class="standard-dialog center loading-dialog">
+            <p class="pixelTitle">PlantOS</p>
+            <!-- Start button -->
+            <audio id="startupSound" src="audio/startup.mp3" type="audio/mp3"></audio>
+            <form id="formTest">
+                <!-- Label and Input for Text Search -->
+                <div class="form-group">
+                    <label for="plantNameInput">Name your plant</label>
+                    <input type="text" id="plantNameInput" placeholder="Planty" required/>
+                </div>
+                <!-- Label and Select Dropdown for Plant Options -->
+                <div class="form-group">
+                    <label for="plant-select">Type</label>
+                    <select id="plant-select">
+                        <option value="Basil">Basil</option>
+                        <option value="Mint">Mint</option>
+                        <option value="Parsley">Parsley</option>
+                        <option value="Lettuce">Lettuce</option>
+                        <option value="Tomato">Tomato</option>
+                    </select>
+                </div>
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input class="btn startButton" id="startButton" type="submit" value="Login">
+                </div>
+            </form>
+            <!-- Loading Bar -->
+            <h3>Connecting... Please wait.</h2>
+            <div class="loading-bar">
+                <div class="loading-square"></div>
+            </div>
+            <!-- Subtitle -->
+            <p class="dialog-text">&copy; 2023 Plantagotchi Computer</p>
+        </div>
+        <!-- Final update dialog -->
+        <div class="standard-dialog center finalUpdate-dialog">
+            <p class="pixelTitle">Update</p>
+            <!-- Loading Bar -->
+            <h2>Connecting... Please wait.</h2>
+            <div class="loading-bar">
+                <div class="loading-square"></div>
+            </div>
+            <!-- Subtitle -->
+            <p class="dialog-text">&copy; 2023 Plantagotchi Computer</p>
+        </div>
+        <!-- Menu Bar -->
+        <ul role="menu-bar">
+            <div class="menu-items-left">
+                <!-- Plant Icon -->
+                <li role="menu-item">
+                    <i class="fa fa-leaf"></i>
+                </li>
+                <!-- Displays plantOS in the left corner -->
+                <li role="menu-item" tabindex="0" aria-haspopup="true">plantOS</li>
+                <!-- Main navigation -->
+                <!-- General links -->
+                <li role="menu-item" tabindex="0" aria-haspopup="true">
+                    File
+                    <ul role="menu">
+                        <li role="menu-item" class="divider"><a href="#" id="aboutLink">About</a></li>
+                        <li role="menu-item"><a href="https://github.com/hollezy">isaacholley</a></li>
+                    </ul>
+                </li>
+                <!-- Edit -->
+                <li role="menu-item" tabindex="0" aria-haspopup="true">Edit</li>
+                <!-- View -->
+                <li role="menu-item" tabindex="0" aria-haspopup="true">View</li>
+                <!-- Special -->
+                <li role="menu-item" tabindex="0" aria-haspopup="true">Special</li>
+            </div>
+            <!-- Displays WiRoot status -->
+            <li role="menu-item" class="menu-os-version">
+                <a href="#" id="aboutLink">
+                <i class="fa-solid fa-wifi"></i>
+                </a>
+            </li>
+            <!-- Displays current time -->
+            <li id="currentTime" role="menu-item" class="menu-os-version">
+        </ul>
+        </ul>
+        <!-- Plantagotchi Window -->
+        <div class="window plantagotchiWindow plantagotchi-window window-style" id="window-draggable-plantagotchi">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button> <!-- Close button -->
+                <h1 class="title">Plant</h1>
+                <!-- Window heading -->
+                <button aria-label="Resize" class="resize"></button> <!-- Resize button -->
+            </div>
+            <!-- Seperator Line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div id="plantagotchiContent">
+                <iframe id="plantIframe" src="plant.html" width="100%" height="500px" style="border:none;"></iframe>
+            </div>
+        </div>
+        <!-- NotePad Window -->
+        <div class="window notepad-window window-style" id="window-draggable-notepad">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Note Pad</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane notePad" contenteditable="true">
+                <!-- Set to editable -->
+                <p>Hello there, it's me <span id="plantNameDisplay"></span> :-)</p>
+                <p>Just a few reminders to myself-</p>
+                <!-- Bulletpoint list -->
+                <ul>
+                    <li>Remember to soak up plenty of sunlight today!</li>
+                    <li>Tell human I could use less water; soil was a bit soggy last time</li>
+                </ul>
+                <p>Please add some notes here if you like-</p>
+            </div>
+        </div>
+        <!-- PlantMail Window -->
+        <div class="window plantmail-window window-style" id="window-draggable-plantmail">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">PlantMail</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <!-- Window content-->
+            <div class="window-pane plantMail">
+                <!-- Email details -->
+                <div class="details-bar">
+                    <span>From</span>
+                    <span>tomato-plant@ecosystem1.net</span>
+                </div>
+                <div class="details-bar">
+                    <span>Subject</span>
+                    <span>PEST CONCERNS</span>
+                </div>
+                <!-- Email from Tom -->
+                <p>Dear <span id="plantNameDisplay">Fellow Plant</span>,</p>
+                <p>This is Tom, the Tomato Plant, sending an urgent warning: I've spotted some pesky invaders in our ecosystem! Please be on high alert for any unusual insect activity and take necessary precautions to protect our plant community. Stay vigilant and safe!</p>
+                <p>Regards,</p>
+                <p>Tom, the Tomato Plant</p>
+                <!-- Email buttons -->
+                <button class="btn">Reply</button>
+                <button class="btn">Forward</button>
+            </div>
+        </div>
+        <!-- Doctor Window -->
+        <div class="window doctor-window window-style" id="window-draggable-doctor">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Doctor</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Separator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane doctorWindow">
+                <div id="doctor-content">
+                    <!-- Embedding Wikipedia -->
+                    <iframe src="doctor.html" width="100%" height="400px" style="border:none;"></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Recycle Bin Window -->
+        <div class="window recyclebin-window window-style" id="window-draggable-recyclebin">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Recycle Bin</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Separator line -->
+            <div class="separator"></div>
+            <!-- Recycle Bin Window -->
+            <div class="window-pane recyclebinWindow">
+                <div id="recyclebin-content">
+                    <p>Nothing here.</p>
+                </div>
+            </div>
+        </div>
+        <!-- README Window -->
+        <div class="window readme-window window-style" id="window-draggable-readme">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">README.txt</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Separator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane readmeWindow">
+                <div id="readme-content">
+                </div>
+            </div>
+        </div>
+        <!-- Econet Window -->
+        <div class="window econet-window window-style" id="window-draggable-econet">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Econet</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane econetWindow">
+                <div id="econet-content">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/50d38n4d14/plymouth/" data-label_1="PLYMOUTH" data-label_2="WEATHER" data-theme="original" >PLYMOUTH WEATHER</a>
+                </div>
+            </div>
+        </div>
+        <!-- Software Update Window -->
+        <div class="window update-window window-style" id="window-draggable-update">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Software Update</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <div class="details-bar">
+                <span>Version 1.0</span>
+                <button class="btn" disabled>Installed</button>
+            </div>
+            <div class="details-bar">
+                <span>Version 2.0</span>
+                <button class="btn" id="version-2">Install</button>
+            </div>
+            <div class="details-bar">
+                <span>Version 3.0</span>
+                <button class="btn" id="version-3">Install</button>
+            </div>
+            <div class="details-bar">
+                <span>Version 4.0</span>
+                <button class="btn" id="version-4">Install</button>
+            </div>
+            <div class="details-bar">
+                <span>Version 5.0</span>
+                <button class="btn" id="version-5">Install</button>
+            </div>
+        </div>
+        </div>
+        <!-- Chat Window -->
+        <div class="window chatWindow chat-window window-style" id="window-draggable-chat">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Chat</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane chatWindow">
+                <div id="update-content">
+                    <iframe src="askPlant.html" width="100%" height="400px" style="border:none;"></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- FinalUpdate Window -->
+        <div class="window finalUpdate-window window-style" id="window-draggable-finalUpdate">
+            <!-- Title bar -->
+            <div class="title-bar">
+                <button aria-label="Close" class="close"></button>
+                <h1 class="title">Update</h1>
+                <button aria-label="Resize" class="resize"></button>
+            </div>
+            <!-- Seperator line -->
+            <div class="separator"></div>
+            <!-- Window content -->
+            <div class="window-pane finalUpdateWindow">
+                <div id="finalUpdate-content">
+                    <p>Please choose an update:</p>
+                </div>
+            </div>
+        </div>
+        <!-- Shorcut icons -->
+        <!-- Econet shortcut -->
+        <div class="shortcut-icon econet-shortcut" data-level="4" data-window-id="window-draggable-econet">
+            <img src="img/econet.png" alt="Econet Icon" id="econet-icon"/>
+            <div class="caption">EcoNet</div>
+        </div>
+        <!-- EcoMail shortcut -->
+        <div class="shortcut-icon ecomail-shortcut" data-level="4" data-window-id="window-draggable-plantmail">
+            <img src="img/mail.png" alt="Mail Icon" id="mail-icon"/>
+            <div class="caption">EcoMail</div>
+        </div>
+        <!-- Doctor shortcut -->
+        <div class="shortcut-icon doctor-shortcut" data-level="3" data-window-id="window-draggable-doctor">
+            <img src="img/doctor.png" alt="Doctor Icon" id="doctor-icon"/>
+            <div class="caption">Doctor</div>
+        </div>
+        <!-- NotePad shortcut -->
+        <div class="shortcut-icon notepad-shortcut" data-level="1" data-window-id="window-draggable-notepad">
+            <img src="img/notepad.png" alt="Notepad Icon" id="notepad-icon"/>
+            <div class="caption">Notepad</div>
+        </div>
+        <!-- RecycleBin shortcut -->
+        <div class="shortcut-icon recyclebin-shortcut" data-level="1" data-window-id="window-draggable-recyclebin">
+            <img src="img/recyclebin.png" id="recyclebin-icon" alt="Recycle Bin Icon"/>
+            <div class="caption">Recycle Bin</div>
+        </div>
+        <!-- README.txt shortcut -->
+        <div class="shortcut-icon readme-shortcut" data-level="1" data-window-id="window-draggable-readme">
+            <img src="img/readme.png" id="readme-icon" alt="Read Me Icon"/>
+            <div class="caption">README.txt</div>
+        </div>
+        <!-- Plantagotchi shortcut -->
+        <div class="shortcut-icon plantagotchi-shortcut" data-level="1" data-window-id="window-draggable-plantagotchi">
+            <img src="img/plantagotchi.png" id="plantagotchi-icon" alt="Plantagotchi Icon"/>
+            <div class="caption">Your Plant</div>
+        </div>
+        <!-- Software Update shortcut -->
+        <div class="shortcut-icon update-shortcut" data-level="1" data-window-id="window-draggable-update">
+            <img src="img/update.png" id="update-icon" alt="Update Icon"/>
+            <div class="caption">Software<br>Update</div>
+        </div>
+        <!-- Music shortcut -->
+        <div class="shortcut-icon music-shortcut" data-level="1" data-window-id="audio">
+            <img src="img/music.png" id="music-icon" alt="Music Icon"/>
+            <div class="caption">Music</div>
+        </div>
+        <!-- Chat shortcut -->
+        <div class="shortcut-icon chat-shortcut" data-level="2" data-window-id="window-draggable-chat">
+            <img src="img/chat.png" id="chat-icon" alt="Chat Icon"/>
+            <div class="caption">Chat</div>
+        </div>
+        <!-- Importing JavaScript functionality-->
+        <script src="./js/arduino.js"></script>
+        <script src="./js/script.js"></script>
+        <script src="./js/readMe.js"></script>
+        <script src="./js/windows.js"></script>
+    </body>
+</html>

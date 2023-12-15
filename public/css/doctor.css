@@ -1,0 +1,109 @@
+/* DOCTOR STYLES - 
+This is the CSS stylesheet used for the Doctor app */
+
+/* General styles */
+body {
+    background: #E7EDDE;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Chicago_12';
+    font-size: 1em;
+}
+
+.btn {
+    margin: 10px;
+}
+
+.h1 {
+    text-align:center;
+}
+
+/* Speech bubble */
+.responseSection {
+    position: relative;
+    font-family: 'Chicago_12'; 
+    font-size: 18px;
+    line-height: 24px;
+    width: 80%;
+    height: 60%;
+    background: #fff;
+    border-radius: 40px;
+    padding: 24px;
+    padding-bottom: 100px; 
+    text-align: left;
+    color: #000;
+    margin: auto;
+    overflow: auto;
+}
+
+/* File upload container */
+.uploadContainer {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 80%;
+    background-color:white;
+    border-bottom-right-radius: 40px;
+    margin:auto;
+    padding-top: 20px;
+}
+
+#uploadForm {
+    display: inline-block;
+}
+
+#imagePreview { /* For uploaded image */
+    float: right;
+    margin-right: 20px;
+    width: 120px; 
+    height: 120px; 
+    object-fit: contain;
+    border: 0px solid #000;
+    padding: 5px;
+    display: none; 
+}
+
+/* Hides scrollbar */
+.responseSection::-webkit-scrollbar {
+    display: none; /* For Chrome & Safari */
+}
+
+.responseSection {
+    -ms-overflow-style: none;  /* For IE and Edge */
+    scrollbar-width: none;  /* For Firefox */
+}
+
+
+/* Loading bar styles */
+.loading-bar { 
+    width: 50%;
+    height: 20px;
+    background-color: #ebf8ed;
+    border-radius: 0;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.loading-square {
+    width: 30px;
+    height: 100%;
+    background-color: rgb(0, 112, 24);
+    position: relative;
+    animation: moveSquare 2s steps(20) infinite;
+}
+
+/* Animation for loading bar */
+@keyframes moveSquare {
+    0% { left: 0; }
+    100% { left: 100%; }
+}

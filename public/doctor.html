@@ -1,0 +1,56 @@
+<!-- DOCTOR PAGE
+    This displays the entire HTML required for the Doctor application
+    This is embedded within the index.html -->
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <!-- Metadata -->
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- External CSS -->
+            <!-- Credit to Sakun for System.css 
+            https://github.com/sakofchit/system.css  -->
+            <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" />
+            <link rel="stylesheet" type="text/css" href="css/doctor.css">
+            <!-- Adding Font Awesome for icons -->
+            <script src="https://kit.fontawesome.com/ea878f8687.js" crossorigin="anonymous"></script>
+        </head>
+        <body>
+            <div class="responseSection" id="responseSection">
+                <h1>Doctor Aloe Vera</h1>
+                <!-- Section to display the response and image -->
+                <div id="responseText">
+                    <!-- Displays upload image or Doctor Aloe Vera -->
+                    <img id="imagePreview" src="img/aloevera.png" alt="Plant Image Preview" style="display: block;" />
+                    <!-- Displays generated text or Doctor's introduction -->
+                    <div id="analysisText">Hello, my dear. I'm <span style="color:green;">Doctor Aloe Vera</span>, your resident plant doctor. I specialise in plant health and nutrition. I'm here to help with anything. Please upload a photo of your plant, and I will provide advice and analysis.
+                    </div>
+                </div>
+                <!-- Container for main content -->
+                <div id="mainContainer">
+                    <!-- Container for uploading images -->
+                    <div class="uploadContainer">
+                        <!-- Loading bar (hidden initially) -->
+                        <div class="loading-bar" id="loadingBar" style="display: none;">
+                            <div class="loading-square"></div>
+                        </div>
+                        <!-- Form for image upload -->
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <label for="plantImage" class="btn">Upload Image</label>
+                            <!-- Sound to be played on image upload (hidden) -->
+                            <audio id="uploadSound" src="audio/uploadimage.wav" hidden></audio>
+                            <!-- File input for image upload (hidden) -->
+                            <input type="file" id="plantImage" name="plantImage" accept="image/*" required style="display: none;">
+                            <!-- Indicator for the selected file -->
+                            <span id="file-chosen">No file selected</span> <br>
+                            <!-- Button to submit the form -->
+                            <button class="btn" type="submit">Call the Doctor <i class="fa fa-phone"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Linking external JavaScript file for scripting -->
+            <script src="/js/doctor.js"></script>
+        </body>
+    </html>

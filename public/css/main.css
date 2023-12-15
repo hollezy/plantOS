@@ -1,0 +1,526 @@
+/* MAIN.CSS
+This is my main css for the index.html. 
+This includes styling for the windows, different apps, navigation and more */
+
+/* Base Styles */
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Window Styles */
+.window {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    z-index: 10;
+}
+
+.window {
+    min-width: 10px;
+}
+
+
+.window-pane {
+    height: 200px;
+    overflow: auto;
+    outline: none;
+    padding: 16px;
+    padding-top: 0;
+    user-select: text;
+}
+
+.doctor-window .window-pane {
+    /* Override previous padding */
+    padding: 0px;
+}
+
+.title-bar {
+    cursor: move;
+}
+
+
+/*  Window heights */
+.plantMail,
+.weatherWindow,
+.notePad,
+.econetWindow {
+    height: 300px
+}
+
+.doctorWindow {
+    height: 400px;
+    overflow: hidden;
+}
+
+.plantagotchiWindow {
+    height: 500px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.econetWindow {
+    height: 200px;
+}
+
+.readmeWindow {
+    height: 200px;
+}
+
+.chatWindow {
+    height: 400px;
+}
+
+/* Dialog styles */
+.standard-dialog {
+    position: fixed;
+    top: 50%; /* Position in the middle of page */
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 1000; /* Arrange to the front */
+    display: none;
+    padding: 30px 80px;
+    text-align: center;
+}
+
+.pixelTitle { /* Font for PlantOS */
+    font-family: 'Mary Jane Olyff', sans-serif;
+    text-align: center;
+    font-size: 5em;
+    color: #10b96d;
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.verisonTitle {
+    font-family: 'Mary Jane Olyff', sans-serif;
+    text-align: center;
+    font-size: 2em;
+    color: #10b96d;
+    width: 100%;
+    margin: 0;
+}
+
+.dialog-text {
+    text-align: center;
+}
+
+/* Menu Bar Styles */
+ul[role="menu-bar"] {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    font-size: 22px;
+    z-index: 20;
+}
+
+.menu-items-left {
+    display: flex;
+    flex: 1;
+}
+
+.menu-os-version {
+    margin-left: auto;
+    padding: 25px 25px;
+}
+
+.menu-os-version:hover i {
+    color: white;
+}
+
+ul[role="menu-bar"] li {
+    padding: 5px 15px;
+}
+
+ul[role="menu-bar"] li a {
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Sub-menu Styles */
+ul[role="menu-bar"] li ul {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+ul[role="menu-bar"] li:hover ul {
+    display: block;
+}
+
+ul[role="menu-bar"] li ul li {
+    float: none;
+}
+
+ul[role="menu-bar"] li ul li a {
+    color: black;
+    padding: 20px 25px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+ul[role="menu-bar"] li:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Shortcut styling */
+.shortcut-icon {
+    position: fixed;
+    text-align: center;
+}
+
+.shortcut-icon img {
+    width: 50px;
+    height: auto;
+}
+
+.shortcut-icon .caption {
+    font-size: 1.5em;
+    margin-top: 5px;
+    font-family: 'Monaco', monospace;
+}
+
+/* Loading Bar Styles */
+.loading-bar {
+    width: 50%;
+    height: 20px;
+    background-color: #d8eadb;
+    border-radius: 0;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.loading-square {
+    width: 30px;
+    height: 100%;
+    background-color: rgb(0, 128, 0);
+    position: relative;
+    animation: moveSquare 2s steps(20) infinite;
+}
+
+@keyframes moveSquare { /* Animation for loading bar */
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Selection Style */
+::selection {
+    background: rgb(144, 238, 144);
+    color: rgb(0, 0, 0);
+}
+
+/* Content Styles */
+.doctorContent {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.plantagotchiContent {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Window Shortcut Styles */
+.econet-shortcut,
+.ecomail-shortcut,
+.doctor-shortcut,
+.notepad-shortcut,
+.recyclebin-shortcut,
+.readme-shortcut,
+.plantagotchi-shortcut,
+.myphotos-shortcut {
+    position: fixed;
+    text-align: center;
+}
+
+/* Shortcut Icon Positioning */
+.econet-shortcut {
+    right: 210px;
+    bottom: 420px;
+}
+
+.ecomail-shortcut {
+    right: 210px;
+    bottom: 520px;
+}
+
+.doctor-shortcut {
+    right: 35px;
+    bottom: 420px;
+}
+
+.notepad-shortcut {
+    right: 30px;
+    bottom: 120px;
+}
+
+.recyclebin-shortcut {
+    right: 20px;
+    bottom: 10px;
+}
+
+.readme-shortcut {
+    right: 200px;
+    bottom: 300px;
+}
+
+.plantagotchi-shortcut {
+    right: 200px;
+    bottom: 200px;
+}
+
+.myphotos-shortcut {
+    right: 200px;
+    bottom: 100px;
+}
+
+.update-shortcut {
+    right: 30px;
+    bottom: 520px;
+}
+
+.music-shortcut {
+    right: 35px;
+    bottom: 220px;
+}
+
+.chat-shortcut {
+    right: 35px;
+    bottom: 320px;
+}
+
+/* Window Styles */
+.window-style,
+.plantagotchi-window,
+.notepad-window,
+.plantmail-window,
+.doctor-window,
+.recyclebin-window,
+.readme-window,
+.myphotos-window,
+.econet-window {
+    position: absolute;
+    display: none;
+}
+
+/* Specific Window Positioning */
+.plantagotchi-window {
+    top: 66px;
+    left: 128px;
+}
+
+.notepad-window {
+    width: 20rem;
+    top: 300px;
+    left: 800px;
+}
+
+.plantmail-window {
+    width: 30rem;
+    top: 100px;
+    left: 400px;
+}
+
+.doctor-window {
+    width: 30rem;
+    top: 400px;
+    left: 800px;
+}
+
+.recyclebin-window {
+    width: 20rem;
+    top: 500px;
+    left: 900px;
+}
+
+.readme-window {
+    width: 25rem;
+    top: 151px;
+    left: 377px;
+}
+
+.myphotos-window {
+    width: 20rem;
+    top: 200px;
+    left: 700px;
+}
+
+.econet-window {
+    width: 30rem;
+    top: 200px;
+    left: 700px;
+}
+
+.update-window {
+    width: 25rem;
+    top: 300px;
+    left: 400px;
+}
+
+.chat-window {
+    width: 25rem;
+    top: 300px;
+    left: 400px;
+}
+
+.finalUpdate-window {
+    width: 25rem;
+    top: 300px;
+    left: 400px;
+}
+
+
+.fa-leaf {
+    color: rgb(0, 128, 0);
+}
+
+
+.loading-dialog h3,
+.loading-bar {
+    display: none;
+}
+
+.wiroot {
+    height: 200px;
+    left: 500px;
+    width: -500px;
+
+}
+
+/* File upload */
+.custom-file-upload {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.custom-file-upload:hover {
+    background-color: #f8f8f8;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.doctor-window img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+ul[role="menu-bar"] {
+    display: none;
+}
+
+.shortcut-icon {
+    display: none;
+}
+
+.window {
+    display: none;
+    min-width: 10px;
+}
+
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+    width: 50%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.startButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.smallAscii {
+    font-family: monospace;
+    font-size: 9px;
+    white-space: pre;
+    line-height: 1;
+    color: green;
+}
+
+.details-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Plant styling */
+#plantContent {
+    height: 100%;
+}
+
+#plantCanvasContainer {
+    height: 50%;
+    width: 100%;
+}
+
+#bottomBar {
+    height: 50%;
+    width: 100%;
+    background-color: #61917f !important;
+    color: white;
+    text-align: center;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metdata -->
+    <meta charset="UTF-8">
+    <title>Plantagotchi</title>
+    <script src="https://pixijs.download/release/pixi.js"></script>
+
+    <!-- Inline CSS is needed for the PIXI application to work correctly, 
+    Unsure why - needs fixing -->
+
+    <style>
+        @font-face {
+            font-family: 'Chicago';
+            src: url('fonts/chicago-12.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        #plantCanvasContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            box-sizing: border-box;
+        }
+        #bottomBar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #61917f;
+            color: white;
+            text-align: center;
+            line-height: normal;
+            box-sizing: border-box;
+            border: none;
+            font-family: 'Chicago', monospace;
+            font-size: 1.5em;
+            padding-top: 20px;
+        }
+        .info {
+            background-color: #82479d48;
+            padding: 5px 10px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .lightGreen {
+            color:rgb(211, 242, 211);
+        }
+    </style>
+</head>
+<body>
+    <!-- Plant PIXI app -->
+    <div id="plantCanvasContainer"></div>
+    <!-- Plant vitals -->
+    <div id="bottomBar">
+        <p><span class="lightGreen">Type:</span> <span id="plantTypeDisplay"></span> </p>
+        <p><span class="lightGreen">Soil Moisture:</span> <span id="soilMoistureValue"></span></p>
+        <p><span class="lightGreen">Temperature:</span> <span id="temperatureValue"></span></p>
+        <p><span class="lightGreen">Humidity:</span> <span id="humidityValue"></span></p>
+    </div>
+    <!-- JS for funtionality -->
+    <script src="./js/canvas.js"></script>
+    <script src="./js/arduino.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
+
+

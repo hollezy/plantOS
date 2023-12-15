@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask your Plant</title>
+    <!-- External stylesheets -->
+    <!-- Credit to Sakun for System.css 
+    https://github.com/sakofchit/system.css  -->
+    <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css" /> 
+    <!-- External CSS  -->
+    <link rel="stylesheet" href="css/askPlant.css" />
+</head>
+<body>
+    <!-- Main body  -->
+    <h1>Ask your plant</h1>
+    <!-- Input form  -->
+    <input type="text" id="userQuestion" placeholder="Ask a question...">
+    <button class="btn" onclick="askQuestion()">Submit</button>
+    <!-- Loading bar  -->
+    <div class="loading-bar" id="loadingBar">
+        <div class="loading-square"></div>
+    </div>
+    <!-- Response from AI is displayed here  -->
+    <p id="responseArea"></p>
+    <!-- JS functionality  -->
+    <script src="./js/askPlant.js"></script>
+</body>
+</html>

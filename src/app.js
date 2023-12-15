@@ -184,7 +184,7 @@ app.post('/ask-plant', async (req, res) => {
 app.use(express.static('public'));
 
 // Define the port for the server to listen on
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Start the server
 server.listen(PORT, () => {
